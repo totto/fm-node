@@ -20,6 +20,7 @@ RUN wget -P /opt http://apache.mirrors.lucidnetworks.net//synapse/2.1.0/synapse-
 
 ADD synapse.xml  /opt/synapse-2..1.0/repository/conf/synapse-config/synapse.xml  
 
-ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
+ENV JAVA_HOME /usr/lib/jvm/zulu-8-amd64/
+#/usr/lib/jvm/java-7-openjdk-amd64
 EXPOSE 9443
 CMD ["/opt/synapse-2.1.0/bin/synapse.sh"]
