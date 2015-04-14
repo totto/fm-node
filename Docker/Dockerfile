@@ -18,7 +18,7 @@ RUN wget -P /opt http://apache.mirrors.lucidnetworks.net//synapse/2.1.0/synapse-
 RUN cd /opt && gzip -d synapse-2.1.0-bin.tar.gz 
 RUN cd /opt && tar xvf synapse-2.1.0-bin.tar 
 #    rm /opt/synapse-2.1.0-bin.tar.gz
-RUN wget -P /opt/synapse-2.1.0/repository/conf https://github.com/totto/fm-node/raw/master/Docker/axis2-tcptransport.xml
+RUN wget -P /opt/synapse-2.1.0/lib http://central.maven.org/maven2/org/apache/axis2/axis2-transport-tcp/1.0.0/axis2-transport-tcp-1.0.0.jar
 
 ADD synapse.xml  /opt/synapse-2.1.0/repository/conf/synapse-config/synapse.xml  
 ADD axis2-tcptransport.xml /opt/synapse-2.1.0/repository/conf/axis2.xml
