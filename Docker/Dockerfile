@@ -13,14 +13,14 @@ RUN apt-get -qq update \
 RUN wget -P /opt http://apache.mirrors.lucidnetworks.net//synapse/2.1.0/synapse-2.1.0-bin.tar.gz && \
     apt-get update && \
     apt-get install -y zip && \
-    apt-get clean && \
-    gz -d synapse-2.1.0-bin.tar.gz \
-    tar xvf synapse-2.1.0-bin.tar.gz 
+    apt-get clean  
+#RUN apt-get install -y gz
+RUN cd /opt && gzip -d synapse-2.1.0-bin.tar.gz 
+RUN cd /opt && tar xvf synapse-2.1.0-bin.tar 
 #    rm /opt/synapse-2.1.0-bin.tar.gz
 
-ADD synapse.xml  /opt/synapse-2..1.0/repository/conf/synapse-config/synapse.xml  
+ADD synapse.xml  /opt/synapse-2.1.0/repository/conf/synapse-config/synapse.xml  
 
-ENV JAVA_HOME /usr/lib/jvm/zulu-8-amd64/
-#/usr/lib/jvm/java-7-openjdk-amd64
+ENV JAVA_HOME /usr/lib/jvm/zulu-7-amd64
 EXPOSE 9443
 CMD ["/opt/synapse-2.1.0/bin/synapse.sh"]
