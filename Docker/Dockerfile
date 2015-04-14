@@ -24,5 +24,6 @@ ADD synapse.xml  /opt/synapse-2.1.0/repository/conf/synapse-config/synapse.xml
 ADD axis2-tcptransport.xml /opt/synapse-2.1.0/repository/conf/axis2.xml
 
 ENV JAVA_HOME /usr/lib/jvm/zulu-8-amd64
-EXPOSE 9443
+EXPOSE 9443 6060 
+
 CMD ["/opt/synapse-2.1.0/bin/synapse.sh"]
