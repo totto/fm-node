@@ -16,17 +16,40 @@
         <target>
       <inSequence>
               <log level="full"/>
+             
               <property name="transport.vfs.ReplyFileName" expression="$trp:FILE_NAME" scope="transport"/>
               <property name="OUT_ONLY" value="true"/>
-              <send>
+	      <send>
                   <endpoint name="endpoint_urn_uuid_A1546EFFD75FC9CCED785986339425964585275">
-                      <address uri="vfs:file:///tmp/test/copy"/>
+<address uri="tcp://localhost:1234/services/StockQuoteProxy/$trp:FILE_NAME"/><!--TODO-->
+                      <!--<address uri="vfs:file:///home/baardl/test/copy"/>-->
                   </endpoint>
               </send>
           </inSequence>
  
         </target>
     </proxy>
+
+<!--
+<proxy name="StockQuoteProxy" transports="tcp">
+        <target>
+            <endpoint>
+                <address uri="http://localhost:9000/services/SimpleStockQuoteService"/>
+            </endpoint>
+            <inSequence>
+                <log level="full"/>
+                <property name="transport.vfs.ReplyFileName" expression="$trp:FILE_NAME" scope="transport"/>
+                <property name="OUT_ONLY" value="true"/>
+		<send>
+                  <endpoint name="endpoint_urn_uuid_A1546EFFD75FC9CCED785986339425964585275">
+
+                      <address uri="vfs:file:///home/baardl/test/copy"/>
+                  </endpoint>
+              </send>
+            </inSequence>
+        </target>
+    </proxy>
+-->
 
 <proxy name="TcpFileProxy" transports="tcp">
         <target>
